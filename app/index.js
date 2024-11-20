@@ -12,12 +12,10 @@ export default function App() {
         <Text style={styles.titleText}>Classes</Text>
       </View>
       <View style={styles.classList}>
-        <Link href="class_stack">
-          <Pressable style={styles.classCard}>
-            <Text style={styles.classTitle}> 9th Grade Honors Biology </Text>
-            <Text style={styles.classDetails}> 1st Period </Text>
-            <Text style={styles.classDetails}> 8:15am - 9:30am </Text>
-          </Pressable>
+        <Link style={styles.classCard} href="class_stack">
+          <Text style={styles.classTitle}> 9th Grade Honors Biology </Text>
+          <Text style={styles.classDetails}> 1st Period </Text>
+          <Text style={styles.classDetails}> 8:15am - 9:30am </Text>
         </Link>
       </View>
       <StatusBar style="auto" />
@@ -57,8 +55,10 @@ const styles = StyleSheet.create({
     flex: 9,
     width: "100%",
     alignItems: "center",
+    // backgroundColor: "red",
   },
   classCard: {
+    // backgroundColor: "green",
     width: "80%",
     height: "15%",
     borderWidth: 1,
