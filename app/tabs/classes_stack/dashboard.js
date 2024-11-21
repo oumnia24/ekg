@@ -1,7 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { Link } from "expo-router";
-import MainButton from "../../components/mainButton";
+import MainButton from "../../../components/mainButton";
+import generalStyles from "../../../styles/generalStyles";
 
 export default function ClassDashboard() {
   return (
@@ -16,7 +17,7 @@ export default function ClassDashboard() {
       <View style={styles.studentList}>
         <Text>Students</Text>
 
-        <Link style={styles.studentCard} href="class_stack/student">
+        <Link style={styles.studentCard} href="tabs/classes_stack/student">
           <Text>Christina Joo</Text>
           <Text>9th Grade</Text>
         </Link>

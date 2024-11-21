@@ -1,13 +1,7 @@
-import { Tabs } from "expo-router";
+import { Slot, Tabs } from "expo-router";
 
-export default function TabLayout() {
+export default function SlotLayout() {
   // Override default layout to ensure that our screen background bleeds
   // into the status bar.
-  return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-      }}
-    ></Tabs>
-  );
+  return <Slot></Slot>;
 }
