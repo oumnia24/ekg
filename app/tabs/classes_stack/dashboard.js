@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from "react-native";
 import { Link } from "expo-router";
 import MainButton from "../../../components/mainButton";
 import generalStyles from "../../../styles/generalStyles";
+import StudentCard from "../../../components/studentCard";
+// import generalStyles from "../../../styles/generalStyles";
 
 export default function ClassDashboard() {
   return (
@@ -14,16 +16,11 @@ export default function ClassDashboard() {
       <View style={styles.notifications}>
         <Text style={generalStyles.header}>Notifications</Text>
       </View>
-      <View style={styles.studentList}>
+      {/* <View style={styles.studentList}> */}
+      <View style={generalStyles.list}>
         <Text style={generalStyles.header}>Students</Text>
-        <View style={styles.studentCard}>
-          <Link
-            style={styles.studentCardLink}
-            href="tabs/classes_stack/student"
-          >
-            <Text>Christina Joo</Text>
-          </Link>
-        </View>
+        <StudentCard first_name="Christina" last_name={"Joo"}></StudentCard>
+        <StudentCard first_name="Oumnia" last_name={"Chellah"}></StudentCard>
       </View>
 
       <StatusBar style="auto" />

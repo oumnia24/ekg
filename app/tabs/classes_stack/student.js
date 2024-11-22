@@ -2,12 +2,23 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import generalStyles from "../../../styles/generalStyles";
 import MainButton from "../../../components/mainButton";
+import { useLocalSearchParams } from "expo-router";
+import { useEffect } from "react";
 
 export default function Student({ name }) {
+  // const params = useLocalSearchParams();
+  const { first_name, last_name } = useLocalSearchParams();
+  // useEffect(() => {
+  //   console.log(first_name);
+  // }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={generalStyles.header}>Christina Joo</Text>
+        <Text style={generalStyles.header}>
+          {first_name} {last_name}
+          {/* Oumnia */}
+        </Text>
       </View>
       <MainButton dest="tabs/games" text="Edit Profile" />
       <View style={styles.summaryView}>

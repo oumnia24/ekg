@@ -21,8 +21,8 @@ const generalStyles = StyleSheet.create({
   },
   list: {
     flex: 9,
-    width: "100%",
-    alignItems: "center",
+    width: "80%",
+    // alignItems: "center",
     // backgroundColor: "red",
   },
 });

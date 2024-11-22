@@ -12,6 +12,7 @@ import { Link } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useState } from "react";
 import db from "../../../database/db";
+import StudentCard from "../../../components/studentCard";
 
 export default function Notifications() {
   const [studentName, setStudentName] = useState("");
@@ -46,24 +47,44 @@ export default function Notifications() {
       <View style={generalStyles.listTitle}>
         <Text style={generalStyles.headerSmall}>Students</Text>
       </View>
-      {/* <View style={generalStyles.list}> */}
-      {/* <Text>Oumnia Chellah</Text>
-        <Text>Jessica Yauney</Text>
-        <Text>Matthew Guck</Text>
-        <Text>Christina Joo</Text> */}
       <View style={generalStyles.list}>
         <FlatList
           data={searchResults}
           renderItem={({ item }) => (
-            <View>
-              <Text>{item.first_name}</Text>
-              <Text>{item.last_name}</Text>
-            </View>
+            // <View>
+            //   <Text>{item}</Text>
+            // </View>
+            <StudentCard
+              first_name={item.first_name}
+              last_name={item.last_name}
+            ></StudentCard>
           )}
-          contentContainerStyle={styles.students}
-          style={generalStyles.classList}
+          style={{ flex: 1 }}
+          contentContainerStyle={{
+            flex: 1,
+            gap: 2,
+          }}
         />
       </View>
+
+      {/* </View> */}
+      {/* <FlatList
+        data={searchResults}
+        renderItem={({ item }) => (
+          // <View>
+          //   <Text>{item.first_name}</Text>
+          //   <Text>{item.last_name}</Text>
+          // </View>
+          <StudentCard
+            first_name={item.first_name}
+            last_name={item.last_name}
+          ></StudentCard>
+        )}
+        contentContainerStyle={generalStyles.list}
+        // contentContainerStyle={styles.students}
+        // style={generalStyles.classList}
+      /> */}
+      {/* </View> */}
 
       {/* </View> */}
 
@@ -87,7 +108,7 @@ const styles = StyleSheet.create({
   },
   searchView: {
     flex: 1,
-    backgroundColor: "red",
+    // backgroundColor: "red",
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
