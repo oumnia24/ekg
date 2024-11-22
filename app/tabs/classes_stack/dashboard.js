@@ -8,19 +8,22 @@ export default function ClassDashboard() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>9th Grade Honors Biology</Text>
+        <Text style={generalStyles.header}>9th Grade Honors Biology</Text>
       </View>
-      <MainButton></MainButton>
+      <MainButton dest="tabs/games" text="START A GAME"></MainButton>
       <View style={styles.notifications}>
-        <Text style={styles.notificationsText}>Notifications</Text>
+        <Text style={generalStyles.header}>Notifications</Text>
       </View>
       <View style={styles.studentList}>
-        <Text>Students</Text>
-
-        <Link style={styles.studentCard} href="tabs/classes_stack/student">
-          <Text>Christina Joo</Text>
-          <Text>9th Grade</Text>
-        </Link>
+        <Text style={generalStyles.header}>Students</Text>
+        <View style={styles.studentCard}>
+          <Link
+            style={styles.studentCardLink}
+            href="tabs/classes_stack/student"
+          >
+            <Text>Christina Joo</Text>
+          </Link>
+        </View>
       </View>
 
       <StatusBar style="auto" />
@@ -37,6 +40,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
+    justifyContent: "center",
     // backgroundColor: "green",
   },
   startGame: {
@@ -46,17 +50,22 @@ const styles = StyleSheet.create({
   notifications: {
     flex: 2,
     // backgroundColor: "green",
+    justifyContent: "center",
+
+    width: "80%",
   },
   studentList: {
     flex: 7,
     // backgroundColor: "orange",
-    width: "100%",
+    width: "80%",
   },
   studentCard: {
     width: "100%",
     borderColor: "#ADB5BD",
     borderWidth: 1,
+    borderRadius: 10,
     height: "15%",
     marginVertical: "5%",
+    justifyContent: "center",
   },
 });

@@ -51,17 +51,20 @@ export default function Notifications() {
         <Text>Jessica Yauney</Text>
         <Text>Matthew Guck</Text>
         <Text>Christina Joo</Text> */}
-      <FlatList
-        data={searchResults}
-        renderItem={({ item }) => (
-          <View>
-            <Text>{item.first_name}</Text>
-            <Text>{item.last_name}</Text>
-          </View>
-        )}
-        contentContainerStyle={styles.posts}
-        style={styles.postsContainer}
-      />
+      <View style={generalStyles.list}>
+        <FlatList
+          data={searchResults}
+          renderItem={({ item }) => (
+            <View>
+              <Text>{item.first_name}</Text>
+              <Text>{item.last_name}</Text>
+            </View>
+          )}
+          contentContainerStyle={styles.students}
+          style={generalStyles.classList}
+        />
+      </View>
+
       {/* </View> */}
 
       <StatusBar style="auto" />
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
   },
   searchView: {
     flex: 1,
-    // backgroundColor: "red",
+    backgroundColor: "red",
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
@@ -113,10 +116,8 @@ const styles = StyleSheet.create({
     color: "black",
     padding: 10,
   },
-  posts: {
+  students: {
     gap: 8,
-  },
-  postsContainer: {
-    width: "100%",
+    // flex: 2,
   },
 });

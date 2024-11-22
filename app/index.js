@@ -6,9 +6,8 @@ import { Link } from "expo-router";
 export default function Login() {
   return (
     <View style={styles.container}>
-      <Link href="tabs">
-        <MainButton></MainButton>
-      </Link>
+      <MainButton dest="tabs" text="Login"></MainButton>
+      {/* </Link> */}
 
       <StatusBar style="auto" />
     </View>

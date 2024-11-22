@@ -1,10 +1,22 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import generalStyles from "../../../styles/generalStyles";
+import MainButton from "../../../components/mainButton";
 
-export default function Student() {
+export default function Student({ name }) {
   return (
     <View style={styles.container}>
-      <Text>Student Info: Christina Joo</Text>
+      <View style={styles.header}>
+        <Text style={generalStyles.header}>Christina Joo</Text>
+      </View>
+      <MainButton dest="tabs/games" text="Edit Profile" />
+      <View style={styles.summaryView}>
+        <Text style={generalStyles.header}>Summary</Text>
+        <Text>She found homework difficult.</Text>
+      </View>
+      <View style={styles.summaryView}>
+        <Text style={generalStyles.header}>Information</Text>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -16,5 +28,25 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  header: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  summaryView: {
+    flex: 1,
+    // backgroundColor: "green",
+    width: "80%",
+    margin: "5%",
+    justifyContent: "space-evenly",
+    borderWidth: 0.8,
+    borderColor: "#212529",
+    borderRadius: 10,
+    paddingHorizontal: "5%",
+  },
+  infoView: {
+    flex: 2,
+    backgroundColor: "yellow",
   },
 });

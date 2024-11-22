@@ -17,7 +17,7 @@ const generalStyles = StyleSheet.create({
     alignItems: "flex-start",
     width: "100%",
     paddingLeft: "10%",
-    backgroundColor: "yellow",
+    // backgroundColor: "yellow",
   },
   list: {
     flex: 9,
