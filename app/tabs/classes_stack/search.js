@@ -1,5 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TextInput, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Pressable,
+  FlatList,
+} from "react-native";
 import generalStyles from "../../../styles/generalStyles";
 import { Link } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -8,6 +15,7 @@ import db from "../../../database/db";
 
 export default function Notifications() {
   const [studentName, setStudentName] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   //Searches for student's name in the database:
   const fetchSearch = async () => {
     console.log(studentName);
@@ -16,6 +24,7 @@ export default function Notifications() {
       .select()
       .or(`first_name.eq.${studentName},last_name.eq.${studentName}`);
     console.log("data:", student_entry_match.data);
+    setSearchResults(student_entry_match.data);
   };
 
   return (
@@ -37,12 +46,24 @@ export default function Notifications() {
       <View style={generalStyles.listTitle}>
         <Text style={generalStyles.headerSmall}>Students</Text>
       </View>
-      <View style={generalStyles.list}>
-        <Text>Oumnia Chellah</Text>
+      {/* <View style={generalStyles.list}> */}
+      {/* <Text>Oumnia Chellah</Text>
         <Text>Jessica Yauney</Text>
         <Text>Matthew Guck</Text>
-        <Text>Christina Joo</Text>
-      </View>
+        <Text>Christina Joo</Text> */}
+      <FlatList
+        data={searchResults}
+        renderItem={({ item }) => (
+          <View>
+            <Text>{item.first_name}</Text>
+            <Text>{item.last_name}</Text>
+          </View>
+        )}
+        contentContainerStyle={styles.posts}
+        style={styles.postsContainer}
+      />
+      {/* </View> */}
+
       <StatusBar style="auto" />
     </View>
   );
@@ -91,5 +112,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     color: "black",
     padding: 10,
+  },
+  posts: {
+    gap: 8,
+  },
+  postsContainer: {
+    width: "100%",
   },
 });
