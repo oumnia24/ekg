@@ -22,8 +22,10 @@ const generalStyles = StyleSheet.create({
   list: {
     flex: 9,
     width: "80%",
-    // alignItems: "center",
-    // backgroundColor: "red",
+  },
+  details: {
+    color: "#6C757D",
+    fontSize: 13,
   },
 });
 

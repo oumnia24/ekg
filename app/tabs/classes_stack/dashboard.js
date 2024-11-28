@@ -1,26 +1,58 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import { Link } from "expo-router";
 import MainButton from "../../../components/mainButton";
 import generalStyles from "../../../styles/generalStyles";
 import StudentCard from "../../../components/studentCard";
+import { useEffect, useState } from "react";
 // import generalStyles from "../../../styles/generalStyles";
+import { useLocalSearchParams } from "expo-router";
+import db from "../../../database/db";
 
 export default function ClassDashboard() {
+  let { class_name, notifications, period, student_ids, time_range } =
+    useLocalSearchParams();
+  student_ids = student_ids.split(",");
+  const [students, setStudents] = useState([]);
+  const fetchStudents = async () => {
+    try {
+      student_ids = student_ids.map((id) => parseInt(id, 10));
+      const students_search = await db
+        .from("students")
+        .select()
+        .in("id", student_ids);
+      setStudents(students_search.data);
+    } catch (err) {
+      console.log("got this error", err);
+    }
+  };
+  useEffect(() => {
+    fetchStudents();
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={generalStyles.header}>9th Grade Honors Biology</Text>
+        <Text style={generalStyles.header}>{class_name}</Text>
+        <Text style={generalStyles.details}>{period} period</Text>
       </View>
+
       <MainButton dest="tabs/games" text="START A GAME"></MainButton>
       <View style={styles.notifications}>
         <Text style={generalStyles.header}>Notifications</Text>
       </View>
-      {/* <View style={styles.studentList}> */}
       <View style={generalStyles.list}>
         <Text style={generalStyles.header}>Students</Text>
-        <StudentCard first_name="Christina" last_name={"Joo"}></StudentCard>
-        <StudentCard first_name="Oumnia" last_name={"Chellah"}></StudentCard>
+        <FlatList
+          data={students}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => (
+            <StudentCard
+              first_name={item.first_name}
+              last_name={item.last_name}
+              grade={item.class_name}
+            ></StudentCard>
+          )}
+        ></FlatList>
       </View>
 
       <StatusBar style="auto" />
@@ -38,10 +70,12 @@ const styles = StyleSheet.create({
   header: {
     flex: 1,
     justifyContent: "center",
-    // backgroundColor: "green",
+    alignItems: "center",
+    marginVertical: "5%",
   },
   startGame: {
     flex: 1,
+    // paddingVertical: "5%",
     // backgroundColor: "orange",
   },
   notifications: {

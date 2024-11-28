@@ -1,10 +1,28 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Platform, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Platform,
+  Pressable,
+  FlatList,
+} from "react-native";
 import { Link } from "expo-router";
 import generalStyles from "../../../styles/generalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useState, useEffect } from "react";
+import db from "../../../database/db";
 
 export default function App() {
+  const [classes, setClasses] = useState([]);
+  const fetchClasses = async () => {
+    const classes_search = await db.from("classes").select();
+    console.log(classes_search.data);
+    setClasses(classes_search.data);
+  };
+  useEffect(() => {
+    fetchClasses();
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -21,12 +39,32 @@ export default function App() {
         <Text style={generalStyles.headerSmall}>Classes</Text>
       </View>
       <View style={generalStyles.list}>
-        <Link style={styles.classCard} href="tabs/classes_stack/dashboard">
-          <Text style={styles.classTitle}> 9th Grade Honors Biology </Text>
-          <Text style={styles.classDetails}> 1st Period </Text>
-          <Text style={styles.classDetails}> 8:15am - 9:30am </Text>
-        </Link>
+        <FlatList
+          data={classes}
+          renderItem={({ item }) => (
+            <View style={styles.classCard}>
+              <Link
+                style={styles.classTitle}
+                href={{
+                  pathname: "tabs/classes_stack/dashboard",
+                  params: {
+                    class_name: item.class_name,
+                    notifications: item.notifications,
+                    period: item.period,
+                    student_ids: item.student_ids,
+                    time_range: item.time_range,
+                  },
+                }}
+              >
+                {item.class_name}
+              </Link>
+              <Text style={generalStyles.details}> {item.period} period </Text>
+              <Text style={generalStyles.details}> {item.time_range} </Text>
+            </View>
+          )}
+        />
       </View>
+
       <StatusBar style="auto" />
     </View>
   );
@@ -67,22 +105,19 @@ const styles = StyleSheet.create({
   },
   classCard: {
     // backgroundColor: "green",
-    width: "80%",
-    height: "15%",
+    width: "100%",
+    height: 100,
     borderWidth: 1,
     borderRadius: 10,
     borderColor: "#ADB5BD",
     flexDirection: "column",
     paddingLeft: "5%",
-    justifyContent: "flex-start",
+    justifyContent: "space-evenly",
+    marginVertical: "5%",
   },
   classTitle: {
     fontSize: 14,
     fontWeight: "bold",
-  },
-  classDetails: {
-    color: "#6C757D",
-    fontSize: 13,
   },
   searchView: {
     position: "absolute",
