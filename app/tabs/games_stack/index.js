@@ -11,9 +11,9 @@ export default function Games() {
   const [selectedGame, setSelectedGame] = useState(null);
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <Text style={generalStyles.header}>GAMES</Text>
-      </View>
+      </View> */}
       <View style={styles.gamesList}>
         <View style={styles.gameCard}>
           <View style={styles.gameDescriptionView}>
@@ -86,7 +86,10 @@ export default function Games() {
         <DropdownComponent></DropdownComponent>
       </View>
       <View style={styles.gameButtons}>
-        <MainButton text="Create Game" dest="tabs/games"></MainButton>
+        <MainButton
+          text="Create Game"
+          dest="tabs/games_stack/truthOrDare"
+        ></MainButton>
         <SecondaryButton
           dest="tabs/games"
           text="View Game History"
@@ -105,15 +108,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  header: {
-    flex: 1,
-    // backgroundColor: "green",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   gamesList: {
     flex: 3,
     width: "80%",
+    // backgroundColor: "red",
+    justifyContent: "center",
+    paddingVertical: "10%",
   },
   classSelect: {
     flex: 1,

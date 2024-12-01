@@ -10,13 +10,24 @@ export default function StackLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: false,
+        headerShown: true,
+        headerShadowVisible: false,
+        headerTitleStyle: {
+          fontSize: 18,
+          fontWeight: "bold",
+        },
       }}
     >
       <Stack.Screen
         name="index"
         options={{
-          title: "Main Games",
+          title: "GAMES",
+        }}
+      />
+      <Stack.Screen
+        name="truthOrDare"
+        options={{
+          title: "Truth Or Dare",
           headerLeft: () => (
             <Pressable
               style={{
