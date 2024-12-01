@@ -44,7 +44,7 @@ export default function App() {
           renderItem={({ item }) => (
             <View style={styles.classCard}>
               <Link
-                style={styles.classTitle}
+                style={generalStyles.name}
                 href={{
                   pathname: "tabs/classes_stack/dashboard",
                   params: {
@@ -114,10 +114,6 @@ const styles = StyleSheet.create({
     paddingLeft: "5%",
     justifyContent: "space-evenly",
     marginVertical: "5%",
-  },
-  classTitle: {
-    fontSize: 14,
-    fontWeight: "bold",
   },
   searchView: {
     position: "absolute",

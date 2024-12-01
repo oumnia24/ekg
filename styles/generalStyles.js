@@ -25,7 +25,11 @@ const generalStyles = StyleSheet.create({
   },
   details: {
     color: "#6C757D",
-    fontSize: 13,
+    fontSize: 12,
+  },
+  name: {
+    fontSize: 14,
+    fontWeight: "bold",
   },
 });
 
