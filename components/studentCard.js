@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Link } from "expo-router";
+import generalStyles from "../styles/generalStyles";
 
 export default function StudentCard({
   // TODO: Implement the functionality to navigate to the details/comments page when
   // this prop is true.
-  first_name,
-  last_name,
+  name,
   grade,
+  student,
 }) {
+  // const { first_name, last_name } = student;
   return (
     <View style={styles.studentCard}>
       <Link
@@ -15,49 +17,18 @@ export default function StudentCard({
         href={{
           pathname: "tabs/classes_stack/student",
           params: {
-            first_name: first_name,
-            last_name: last_name,
+            student: JSON.stringify(student),
           },
         }}
       >
-        {first_name} {last_name}
+        {name}
       </Link>
-
-      {/*  href={{
-          // pathname: "tabs/feed/details",
-          pathname: pathname,
-          params: {
-            id: id,
-            username: username,
-            timestamp: timestamp,
-            text: text,
-            score: score,
-            commentCount: commentCount,
-            vote: vote,
-          },
-        }}
-        asChild={true}
-        style={styles.content}
-      > */}
+      <Text style={generalStyles.details}> {grade}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    backgroundColor: "#FF8361",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 40,
-    width: "50%",
-    height: "7%",
-  },
-  text: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
   studentCard: {
     width: "100%",
     borderColor: "#ADB5BD",
@@ -66,7 +37,7 @@ const styles = StyleSheet.create({
     // height: "15%",
     height: 75,
     marginVertical: "5%",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     paddingLeft: "5%",
   },
   studentName: {

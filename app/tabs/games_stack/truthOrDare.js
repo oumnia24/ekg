@@ -46,7 +46,10 @@ export default function TruthOrDare() {
       </View>
 
       <View style={styles.gameButtons}>
-        <MainButton text="Start Game" dest="tabs/games"></MainButton>
+        <MainButton
+          text="Start Game"
+          dest="tabs/games_stack/gameStatus"
+        ></MainButton>
       </View>
 
       <StatusBar style="auto" />

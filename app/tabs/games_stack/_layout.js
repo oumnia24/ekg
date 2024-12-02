@@ -42,6 +42,42 @@ export default function StackLayout() {
           ),
         }}
       />
+      <Stack.Screen
+        name="gameStatus"
+        options={{
+          title: "Game Status",
+          headerLeft: () => (
+            <Pressable
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onPress={() => router.back()}
+            >
+              <Ionicons name="chevron-back-outline" size={24} color="orange" />
+            </Pressable>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="gameSummary"
+        options={{
+          title: "Summary",
+          headerLeft: () => (
+            <Pressable
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onPress={() => router.back()}
+            >
+              <Ionicons name="chevron-back-outline" size={24} color="orange" />
+            </Pressable>
+          ),
+        }}
+      />
     </Stack>
   );
 }

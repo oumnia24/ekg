@@ -11,24 +11,17 @@ export default function StackLayout() {
     <Stack
       screenOptions={{
         headerShown: true,
+        headerShadowVisible: false,
+        headerTitleStyle: {
+          fontSize: 18,
+          fontWeight: "bold",
+        },
       }}
     >
       <Stack.Screen
         name="index"
         options={{
-          title: "Class Dashboard",
-          headerLeft: () => (
-            <Pressable
-              style={{
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              onPress={() => router.back()}
-            >
-              <Ionicons name="chevron-back-outline" size={24} color="orange" />
-            </Pressable>
-          ),
+          title: "SELECT A CLASS",
         }}
       />
     </Stack>

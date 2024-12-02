@@ -47,9 +47,9 @@ export default function ClassDashboard() {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
             <StudentCard
-              first_name={item.first_name}
-              last_name={item.last_name}
+              name={`${item.first_name} ${item.last_name}`}
               grade={item.class_name}
+              student={item}
             ></StudentCard>
           )}
         ></FlatList>

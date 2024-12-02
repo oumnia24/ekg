@@ -26,9 +26,6 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View>
-          <Text style={generalStyles.header}>SELECT A CLASS</Text>
-        </View>
         <View style={styles.searchView}>
           <Link href="tabs/classes_stack/search">
             <Ionicons name="search" size={24} color="orange" />

@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
   gamesList: {
     flex: 3,
     width: "80%",
-    // backgroundColor: "red",
     justifyContent: "center",
     paddingVertical: "10%",
   },
