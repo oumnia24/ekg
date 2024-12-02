@@ -78,6 +78,24 @@ export default function StackLayout() {
           ),
         }}
       />
+      <Stack.Screen
+        name="gameHistory"
+        options={{
+          title: "Previous Games",
+          headerLeft: () => (
+            <Pressable
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onPress={() => router.back()}
+            >
+              <Ionicons name="chevron-back-outline" size={24} color="orange" />
+            </Pressable>
+          ),
+        }}
+      />
     </Stack>
   );
 }

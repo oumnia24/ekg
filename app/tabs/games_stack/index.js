@@ -91,7 +91,7 @@ export default function Games() {
           dest="tabs/games_stack/truthOrDare"
         ></MainButton>
         <SecondaryButton
-          dest="tabs/games"
+          dest="tabs/games_stack/gameHistory"
           text="View Game History"
         ></SecondaryButton>
       </View>
