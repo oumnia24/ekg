@@ -9,6 +9,10 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
+        headerTitleStyle: {
+          fontSize: 18,
+          fontWeight: "bold",
+        },
       }}
     >
       <Tabs.Screen
@@ -44,8 +48,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: "Settings",
-          // headerShown: false,
+          title: "SETTINGS",
+          headerShown: true,
+          headerShadowVisible: false,
           tabBarIcon: ({ size, color }) => (
             <Ionicons name="settings" size={size} color={color} />
           ),
