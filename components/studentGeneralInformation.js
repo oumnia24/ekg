@@ -3,8 +3,10 @@ import { View, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import Feather from "@expo/vector-icons/Feather";
 
 const StudentGeneralInformation = ({ studentInfo }) => {
+  const tech = [];
   return (
     <View style={styles.information}>
       <View style={styles.infoLine}>
@@ -69,7 +71,37 @@ const StudentGeneralInformation = ({ studentInfo }) => {
         </View>
         <Text>{studentInfo.IEP ? "Yes" : "No"}</Text>
       </View>
-      <View style={styles.infoLine}></View>
+      <View style={styles.infoLine}>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <FontAwesome name="laptop" size={24} color="black" />
+          <Text> Technology Access </Text>
+        </View>
+
+        <View style={{ alignItems: "flex-end" }}>
+          {studentInfo.technology_access.length > 0 ? (
+            studentInfo.technology_access.map((item, index) => (
+              <Text key={index}>{item}</Text>
+            ))
+          ) : (
+            <Text>N/A</Text>
+          )}
+        </View>
+      </View>
+      <View style={styles.infoLine}>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <Feather name="activity" size={24} color="black" />
+          <Text> Extra-curriculars </Text>
+        </View>
+        <View style={{ alignItems: "flex-end" }}>
+          {studentInfo.extra_curriculars.length > 0 ? (
+            studentInfo.extra_curriculars.map((item, index) => (
+              <Text key={index}>{item}</Text>
+            ))
+          ) : (
+            <Text>N/A</Text>
+          )}
+        </View>
+      </View>
     </View>
   );
 };
