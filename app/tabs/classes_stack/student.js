@@ -55,24 +55,6 @@ export default function Student() {
         <View style={styles.titles}>
           <Text style={generalStyles.header}>General Information</Text>
         </View>
-        {/* <View style={styles.information}>
-          <View style={styles.infoLine}>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <Ionicons name="globe" size={24} color="black" />
-              <Text> Language at Home</Text>
-            </View>
-
-            <Text>{studentInfo.home_language}</Text>
-          </View>
-          <View style={styles.infoLine}></View>
-          <View style={styles.infoLine}></View>
-          <View style={styles.infoLine}></View>
-          <View style={styles.infoLine}></View>
-          <View style={styles.infoLine}></View>
-          <View style={styles.infoLine}></View>
-          <View style={styles.infoLine}></View>
-          <View style={styles.infoLine}></View>
-        </View> */}
         <StudentGeneralInformation
           studentInfo={studentInfo}
         ></StudentGeneralInformation>
@@ -96,12 +78,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    marginVertical: "10%",
   },
   summaryView: {
     // flex: 1,
     minHeight: 60,
     width: "80%",
-    margin: "5%",
+    margin: "10%",
     justifyContent: "space-evenly",
     paddingHorizontal: "5%",
     borderColor: "#ADB5BD",
@@ -116,7 +99,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     justifyContent: "center",
     width: "100%",
-    paddingTop: "2%",
+    paddingVertical: "3%",
   },
   bulletpointsView: {
     // flex: 4,
@@ -132,7 +115,7 @@ const styles = StyleSheet.create({
     flex: 3,
     minHeight: 60,
     width: "80%",
-    margin: "5%",
+    // margin: "5%",
     paddingHorizontal: "5%",
     borderColor: "#ADB5BD",
     borderWidth: 1,
