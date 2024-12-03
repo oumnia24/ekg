@@ -9,6 +9,12 @@ import generalStyles from "../../../styles/generalStyles";
 
 export default function Games() {
   const [selectedGame, setSelectedGame] = useState(null);
+  const nextPage = {
+    truthOrDare: "tabs/games_stack/truthOrDare",
+    twoTruthsAndALie: "tabs/games_stack/gameStatus",
+    customActivity: "tabs/games_stack/chatAI",
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       {/* <View style={styles.header}>
@@ -88,7 +94,7 @@ export default function Games() {
       <View style={styles.gameButtons}>
         <MainButton
           text="Create Game"
-          dest="tabs/games_stack/truthOrDare"
+          dest={selectedGame ? nextPage[selectedGame] : "tabs/games_stack"}
         ></MainButton>
         <SecondaryButton
           dest="tabs/games_stack/gameHistory"
