@@ -38,8 +38,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name="notifications"
         options={{
-          title: "Notifications",
-          // headerShown: false,
+          title: "NOTIFICATIONS",
+          headerShown: true,
+          headerShadowVisible: false,
           tabBarIcon: ({ size, color }) => (
             <MaterialCommunityIcons size={size} name="bell" color={color} />
           ),
