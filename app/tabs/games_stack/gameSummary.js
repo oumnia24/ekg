@@ -47,7 +47,7 @@ export default function gameStatus() {
       const updatedInfo = studentInfo.data.saved_info
         ? [...studentInfo.data.saved_info, response]
         : [response];
-      console.log("updated info:", updatedInfo);
+      // console.log("updated info:", updatedInfo);
       const error = await db
         .from("students")
         .update({ saved_info: updatedInfo })

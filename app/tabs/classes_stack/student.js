@@ -14,16 +14,37 @@ import { useLocalSearchParams } from "expo-router";
 import { useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import StudentGeneralInformation from "../../../components/studentGeneralInformation";
+import db from "../../../database/db";
+import { useState } from "react";
 
 export default function Student() {
-  // const params = useLocalSearchParams();
-  const { student } = useLocalSearchParams();
-  const studentInfo = JSON.parse(student);
-  useEffect(() => {
-    console.log("this is student:", JSON.parse(student));
-  }, []);
-  const data = ["string1", "blablablablbalbal", "hehojroeihroei"];
+  const params = useLocalSearchParams();
+  const [studentInfo, setStudentInfo] = useState(null);
 
+  const retrieveStudentInfo = async () => {
+    try {
+      if (params.student) {
+        console.log("got student from params:", params.student);
+        setStudentInfo(JSON.parse(params.student));
+      } else {
+        const student = await db
+          .from("students")
+          .select()
+          .eq("id", parseInt(params.id));
+        console.log("database res:", student.data);
+        setStudentInfo(student.data[0]);
+      }
+    } catch (err) {
+      console.log("got this error for student info:", err);
+    }
+  };
+  useEffect(() => {
+    retrieveStudentInfo();
+  }, []);
+
+  if (!studentInfo) {
+    return null;
+  }
   return (
     <ScrollView
       style={styles.container}

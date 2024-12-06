@@ -19,19 +19,20 @@ export default function Notifications() {
   const [searchResults, setSearchResults] = useState([]);
   //Searches for student's name in the database:
   const fetchSearch = async () => {
-    console.log(studentName);
+    // console.log(studentName);
     const student_entry_match = await db
       .from("students")
       .select()
       .or(`first_name.eq.${studentName},last_name.eq.${studentName}`);
-    console.log("data:", student_entry_match.data);
+    // console.log("data:", student_entry_match.data);
     setSearchResults(student_entry_match.data);
+    console.log("search found:", student_entry_match.data);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={generalStyles.header}>ALL STUDENTS</Text>
+        {/* <Text style={generalStyles.header}>ALL STUDENTS</Text> */}
       </View>
       <View style={styles.searchView}>
         <TextInput
@@ -41,7 +42,7 @@ export default function Notifications() {
           onChangeText={setStudentName}
         />
         <Pressable onPress={fetchSearch}>
-          <Ionicons name="search" size={32} color="black"></Ionicons>
+          <Ionicons name="search" size={32} color="#FF8361"></Ionicons>
         </Pressable>
       </View>
       <View style={generalStyles.listTitle}>
@@ -55,8 +56,11 @@ export default function Notifications() {
             //   <Text>{item}</Text>
             // </View>
             <StudentCard
-              first_name={item.first_name}
-              last_name={item.last_name}
+              // first_name={item.first_name}
+              // last_name={item.last_name}
+              name={`${item.first_name} ${item.last_name}`}
+              grade={item.class_name}
+              student={item}
             ></StudentCard>
           )}
           style={{ flex: 1 }}

@@ -9,16 +9,14 @@ import {
   FlatList,
   Pressable,
 } from "react-native";
-import { notificationsData } from "../../database/notificationsData";
+import { notificationsData } from "../../../database/notificationsData";
 
 import { useState } from "react";
-import generalStyles from "../../styles/generalStyles";
-import { responseData } from "../../database/data";
+import generalStyles from "../../../styles/generalStyles";
 import { Ionicons } from "@expo/vector-icons";
-import db from "../../database/db";
+import db from "../../../database/db";
 import { Link } from "expo-router";
 
-const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
 
 export default function gameStatus() {
@@ -44,7 +42,7 @@ export default function gameStatus() {
       const updatedInfo = studentInfo.data.saved_info
         ? [...studentInfo.data.saved_info, response]
         : [response];
-      console.log("updated info:", updatedInfo);
+      // console.log("updated info:", updatedInfo);
       const error = await db
         .from("students")
         .update({ saved_info: updatedInfo })
@@ -105,6 +103,13 @@ export default function gameStatus() {
   );
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <Text
+          style={[generalStyles.details, { fontSize: 14, textAlign: "center" }]}
+        >
+          Other teachers have sent you the following alerts:
+        </Text>
+      </View>
       <View style={styles.responsesView}>
         <Text style={generalStyles.headerSmall}> Today</Text>
         <FlatList
@@ -126,47 +131,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  gameStatsView: {
-    flex: 2,
-    // backgroundColor: "#FFF0EC",
+  header: {
+    flex: 1,
     // backgroundColor: "red",
-    width: "75%",
+    width: "70%",
     alignItems: "center",
-    justifyContent: "space-between",
-    borderRadius: 30,
-    // paddingVertical: "10%",
-    marginVertical: "5%",
-    flexDirection: "row",
+    // justifyContent: "center",
   },
-  totalResponsesView: {
-    // flex: 1,
-    width: screenWidth * 0.35,
-    borderRadius: 30,
-    // paddingVertical: "10%",
-    backgroundColor: "#FFF0EC",
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  totalQuestionsView: {
-    width: screenWidth * 0.35,
-    // backgroundColor: "green",
-    height: "100%",
-    // padding: 10,
-    justifyContent: "space-between",
-  },
-  totalPerQuestion: {
-    backgroundColor: "#FFF0EC",
-    // flex: 1,
-    width: "100%",
-    height: "48%",
-    borderRadius: 30,
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    flexDirection: "row",
-  },
+
   responsesView: {
-    flex: 6,
+    flex: 10,
     // backgroundColor: "red",
     paddingVertical: "5%",
     width: "80%",
@@ -221,9 +195,6 @@ const styles = StyleSheet.create({
   buttonRow: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    // paddingVertical: "2%",
-    // backgroundColor: "red",
-    // height: "30%",
   },
 
   button: {

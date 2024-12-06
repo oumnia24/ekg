@@ -31,6 +31,11 @@ const generalStyles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold",
   },
+  informations: {
+    fontSize: 16,
+    lineHeight: 22,
+    color: "#6C757D",
+  },
 });
 
 export default generalStyles;

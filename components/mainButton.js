@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { StyleSheet, Text, View, Dimensions, Pressable } from "react-native";
 import { Link } from "expo-router";
 
 export default function MainButton({
@@ -6,14 +6,29 @@ export default function MainButton({
   // this prop is true.
   text,
   dest,
+  onPress,
+  params,
 }) {
   return (
-    <View style={styles.container}>
-      <Link style={styles.text} href={dest}>
-        {text}
-      </Link>
-      {/* <Text style={styles.text}>{text}</Text> */}
-    </View>
+    // <Pressable style={styles.container}>
+    //   <Link style={styles.text} href={dest}>
+    //     {text}
+    //   </Link>
+    //   {/* <Text>{text}</Text> */}
+    //   {/* <Text style={styles.text}>{text}</Text> */}
+    // </Pressable>
+
+    <Link
+      href={{
+        pathname: dest,
+        params: params,
+      }}
+      asChild
+    >
+      <Pressable style={styles.container} onPress={onPress}>
+        <Text style={styles.text}> {text} </Text>
+      </Pressable>
+    </Link>
   );
 }
 

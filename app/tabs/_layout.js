@@ -1,10 +1,13 @@
 import { Tabs } from "expo-router";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { View, Text, Pressable } from "react-native";
+import { useRouter } from "expo-router";
 
 export default function TabLayout() {
   // Override default layout to ensure that our screen background bleeds
   // into the status bar.
+  const router = useRouter();
   return (
     <Tabs
       screenOptions={{
@@ -36,11 +39,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="notifications"
+        name="notifications_stack"
         options={{
-          title: "NOTIFICATIONS",
-          headerShown: true,
-          headerShadowVisible: false,
+          title: "Notifications",
           tabBarIcon: ({ size, color }) => (
             <MaterialCommunityIcons size={size} name="bell" color={color} />
           ),

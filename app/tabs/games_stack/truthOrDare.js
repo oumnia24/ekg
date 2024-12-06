@@ -14,11 +14,13 @@ import DropdownComponent from "../../../components/dropdownComponent";
 import SecondaryButton from "../../../components/secondaryButton";
 import generalStyles from "../../../styles/generalStyles";
 import MiniButton from "../../../components/miniButton";
+import { useLocalSearchParams } from "expo-router";
 
 export default function TruthOrDare() {
   //   const [selectedGame, setSelectedGame] = useState(null);
   const [truth, setTruth] = useState("");
   const [dare, setDare] = useState("");
+  const params = useLocalSearchParams();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.promptView}>
@@ -49,6 +51,7 @@ export default function TruthOrDare() {
         <MainButton
           text="Start Game"
           dest="tabs/games_stack/gameStatus"
+          params={params}
         ></MainButton>
       </View>
 

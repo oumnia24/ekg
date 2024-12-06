@@ -24,7 +24,24 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-router"],
-    "scheme": "expo-router-test"
+    "plugins": [
+      "expo-router"
+    ],
+    "scheme": "expo-router-test",
+    "owner": "oumnia2411",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "fba687d6-2744-4f18-9919-bf754f158b41"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/fba687d6-2744-4f18-9919-bf754f158b41"
+    }
   }
 }

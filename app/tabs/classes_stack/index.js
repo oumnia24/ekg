@@ -12,25 +12,32 @@ import generalStyles from "../../../styles/generalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useState, useEffect } from "react";
 import db from "../../../database/db";
+import { useRouter } from "expo-router";
 
 export default function App() {
   const [classes, setClasses] = useState([]);
   const fetchClasses = async () => {
     const classes_search = await db.from("classes").select();
-    console.log(classes_search.data);
     setClasses(classes_search.data);
   };
   useEffect(() => {
     fetchClasses();
   }, []);
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.searchView}>
-          <Link href="tabs/classes_stack/search">
-            <Ionicons name="search" size={24} color="orange" />
-          </Link>
-        </View>
+        <Text style={generalStyles.header}> SELECT A CLASS </Text>
+        <Pressable
+          onPress={() => router.push("/tabs/classes_stack/info_home")}
+          style={{ marginLeft: 10 }} // Add spacing between title and icon
+        >
+          <Ionicons
+            name="information-circle-outline"
+            size={24}
+            color="orange"
+          />
+        </Pressable>
       </View>
       <View style={generalStyles.listTitle}>
         <Text style={generalStyles.headerSmall}>Classes</Text>
@@ -73,7 +80,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: Platform.OS === "ios" ? 40 : StatusBar.currentHeight,
+    // paddingTop: Platform.OS === "ios" ? 40 : StatusBar.currentHeight,
   },
   header: {
     flex: 2,

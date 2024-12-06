@@ -10,15 +10,21 @@ import {
 } from "react-native";
 import MainButton from "../../../components/mainButton";
 import CheckBox from "expo-checkbox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DropdownComponent from "../../../components/dropdownComponent";
 import SecondaryButton from "../../../components/secondaryButton";
 import generalStyles from "../../../styles/generalStyles";
 import MiniButton from "../../../components/miniButton";
 import { responseData } from "../../../database/data";
+import { useLocalSearchParams } from "expo-router";
 
 export default function gameStatus() {
   //   const [selectedGame, setSelectedGame] = useState(null);
+  const params = useLocalSearchParams();
+  const { selectedClass } = params;
+  // useEffect(() => {
+  //   // console.log(selectedClass);
+  // }, []);
   const [truth, setTruth] = useState("");
   const [dare, setDare] = useState("");
   const renderItem = ({ item }) => (
@@ -38,7 +44,7 @@ export default function gameStatus() {
       <View style={styles.gameInfo}>
         <View style={styles.classInfo}>
           <Text style={generalStyles.details}>Class</Text>
-          <Text style={generalStyles.headerSmall}>1st Period</Text>
+          <Text style={generalStyles.headerSmall}>{selectedClass}</Text>
         </View>
         <View style={styles.timeInfo}>
           <Text style={generalStyles.details}>Time Elapsed</Text>

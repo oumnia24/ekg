@@ -1,5 +1,5 @@
 import { Stack } from "expo-router";
-import { Pressable, Text } from "react-native";
+import { View, Pressable, Text } from "react-native";
 import { useRouter } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -21,7 +21,22 @@ export default function StackLayout() {
       <Stack.Screen
         name="index"
         options={{
-          title: "GAMES",
+          // title: "GAMES",
+          headerTitle: () => (
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Text style={{ fontSize: 18, fontWeight: "bold" }}>GAMES</Text>
+              <Pressable
+                onPress={() => router.push("/tabs/games_stack/info_games")}
+                style={{ marginLeft: 10 }} // Add spacing between title and icon
+              >
+                <Ionicons
+                  name="information-circle-outline"
+                  size={24}
+                  color="orange"
+                />
+              </Pressable>
+            </View>
+          ),
         }}
       />
       <Stack.Screen
@@ -82,6 +97,93 @@ export default function StackLayout() {
         name="gameHistory"
         options={{
           title: "Previous Games",
+          headerLeft: () => (
+            <Pressable
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onPress={() => router.back()}
+            >
+              <Ionicons name="chevron-back-outline" size={24} color="orange" />
+            </Pressable>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="student"
+        options={{
+          // title: "STUDENT",
+          headerTitle: () => (
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Text style={{ fontSize: 18, fontWeight: "bold" }}>STUDENT</Text>
+              <Pressable
+                onPress={() => router.push("/tabs/games_stack/info_student")}
+                style={{ marginLeft: 10 }} // Add spacing between title and icon
+              >
+                <Ionicons
+                  name="information-circle-outline"
+                  size={24}
+                  color="orange"
+                />
+              </Pressable>
+            </View>
+          ),
+          headerLeft: () => (
+            <Pressable
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onPress={() => router.back()}
+            >
+              <Ionicons name="chevron-back-outline" size={24} color="orange" />
+            </Pressable>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="info_student"
+        options={{
+          title: "STUDENT",
+          headerLeft: () => (
+            <Pressable
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onPress={() => router.back()}
+            >
+              <Ionicons name="chevron-back-outline" size={24} color="orange" />
+            </Pressable>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="info_games"
+        options={{
+          title: "GAMES",
+          headerLeft: () => (
+            <Pressable
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onPress={() => router.back()}
+            >
+              <Ionicons name="chevron-back-outline" size={24} color="orange" />
+            </Pressable>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="chatAI"
+        options={{
+          title: "AI Chatbot",
           headerLeft: () => (
             <Pressable
               style={{

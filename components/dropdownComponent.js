@@ -16,14 +16,14 @@ import { useEffect } from "react";
 //   { label: "Item 8", value: "8" },
 // ];
 
-const DropdownComponent = () => {
-  const [value, setValue] = useState(null);
+const DropdownComponent = ({ selectedClass, setSelectedClass }) => {
+  // const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const [data, setData] = useState([]);
   const getClassData = async () => {
     try {
       const classes = await db.from("classes").select();
-      console.log("this the data:", classes.data);
+      // console.log("this the data:", classes.data);
       classData = classes.data;
       const new_data = classData.map((classObj) => ({
         label: `${classObj.period} period: ${classObj.class_name}`,
@@ -50,11 +50,13 @@ const DropdownComponent = () => {
         labelField="label"
         valueField="value"
         placeholder={!isFocus ? "Select a class" : "..."}
-        value={value}
+        // value={value}
+        value={selectedClass}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         onChange={(item) => {
-          setValue(item.value);
+          // setValue(item.value);
+          setSelectedClass(item.value);
           setIsFocus(false);
         }}
       />

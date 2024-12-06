@@ -1,18 +1,42 @@
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, Text, View, Dimensions } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Alert,
+} from "react-native";
 import MainButton from "../../../components/mainButton";
 import CheckBox from "expo-checkbox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DropdownComponent from "../../../components/dropdownComponent";
 import SecondaryButton from "../../../components/secondaryButton";
 import generalStyles from "../../../styles/generalStyles";
+import { useRouter } from "expo-router";
 
 export default function Games() {
   const [selectedGame, setSelectedGame] = useState(null);
+  const [selectedClass, setSelectedClass] = useState(null);
   const nextPage = {
     truthOrDare: "tabs/games_stack/truthOrDare",
     twoTruthsAndALie: "tabs/games_stack/gameStatus",
     customActivity: "tabs/games_stack/chatAI",
+  };
+
+  const router = useRouter();
+
+  const handleCreateGame = () => {
+    if (!selectedGame) {
+      Alert.alert(
+        "No Game Selected",
+        "Please select a game before proceeding."
+      );
+    }
+    // else {
+    //   // console.log("Navigating to:", nextPage[selectedGame]);
+    //   // console.log("with the class:", selectedClass);
+    // }
   };
 
   return (
@@ -89,12 +113,17 @@ export default function Games() {
       </View>
       <View style={styles.classSelect}>
         <Text style={generalStyles.headerSmall}>Current class</Text>
-        <DropdownComponent></DropdownComponent>
+        <DropdownComponent
+          selectedClass={selectedClass}
+          setSelectedClass={setSelectedClass}
+        ></DropdownComponent>
       </View>
       <View style={styles.gameButtons}>
         <MainButton
           text="Create Game"
           dest={selectedGame ? nextPage[selectedGame] : "tabs/games_stack"}
+          onPress={handleCreateGame}
+          params={{ selectedClass }}
         ></MainButton>
         <SecondaryButton
           dest="tabs/games_stack/gameHistory"
