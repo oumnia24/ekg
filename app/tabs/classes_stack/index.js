@@ -46,25 +46,29 @@ export default function App() {
         <FlatList
           data={classes}
           renderItem={({ item }) => (
-            <View style={styles.classCard}>
-              <Link
-                style={generalStyles.name}
-                href={{
-                  pathname: "tabs/classes_stack/dashboard",
-                  params: {
-                    class_name: item.class_name,
-                    notifications: item.notifications,
-                    period: item.period,
-                    student_ids: item.student_ids,
-                    time_range: item.time_range,
-                  },
-                }}
-              >
-                {item.class_name}
-              </Link>
-              <Text style={generalStyles.details}> {item.period} period </Text>
-              <Text style={generalStyles.details}> {item.time_range} </Text>
-            </View>
+            <Link
+              href={{
+                pathname: "tabs/classes_stack/dashboard",
+                params: {
+                  class_name: item.class_name,
+                  notifications: item.notifications,
+                  period: item.period,
+                  student_ids: item.student_ids,
+                  time_range: item.time_range,
+                },
+              }}
+              asChild
+            >
+              <Pressable style={styles.classCard}>
+                <Text style={generalStyles.name}>{item.class_name}</Text>
+
+                <Text style={generalStyles.details}>
+                  {" "}
+                  {item.period} period{" "}
+                </Text>
+                <Text style={generalStyles.details}> {item.time_range} </Text>
+              </Pressable>
+            </Link>
           )}
         />
       </View>

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Link } from "expo-router";
 import generalStyles from "../styles/generalStyles";
 
@@ -11,20 +11,20 @@ export default function StudentCard({
 }) {
   // const { first_name, last_name } = student;
   return (
-    <View style={styles.studentCard}>
-      <Link
-        style={styles.studentName}
-        href={{
-          pathname: "tabs/classes_stack/student",
-          params: {
-            student: JSON.stringify(student),
-          },
-        }}
-      >
-        {name}
-      </Link>
-      <Text style={generalStyles.details}> {grade}</Text>
-    </View>
+    <Link
+      href={{
+        pathname: "tabs/classes_stack/student",
+        params: {
+          student: JSON.stringify(student),
+        },
+      }}
+      asChild
+    >
+      <Pressable style={styles.studentCard}>
+        <Text style={styles.studentName}>{name}</Text>
+        <Text style={generalStyles.details}> {grade}</Text>
+      </Pressable>
+    </Link>
   );
 }
 

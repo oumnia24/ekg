@@ -41,7 +41,7 @@ export default function TruthOrDare() {
           multiline
         />
         <MiniButton
-          dest="tabs/games_stack"
+          dest="tabs/games_stack/chatAI"
           text="AI Help"
           style={{ alignSelf: "center", marginVertical: "5%" }}
         ></MiniButton>

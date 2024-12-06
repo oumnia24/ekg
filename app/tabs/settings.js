@@ -36,7 +36,7 @@ export default function Student() {
           Computer Science Teacher
         </Text>
       </View>
-      <MainButton dest="tabs/games" text="Account Settings" />
+      <MainButton dest="tabs/settings" text="Account Settings" />
       <View style={styles.informationView}>
         <View style={styles.titles}>
           <Text style={generalStyles.header}>Information to Display</Text>

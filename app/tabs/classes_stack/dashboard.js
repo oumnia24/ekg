@@ -73,35 +73,34 @@ export default function ClassDashboard() {
   };
   const renderItem = ({ item }) => (
     <View>
-      <View style={styles.responseCard}>
-        <View style={styles.responseText}>
-          <Link
-            style={generalStyles.name}
-            href={{
-              pathname: "tabs/classes_stack/student",
-              params: {
-                name: item.name,
-                id: item.id,
-              },
-            }}
-          >
-            {item.name}
-          </Link>
-          {/* <Text style={generalStyles.name}> {item.name}</Text> */}
-          <Text style={[generalStyles.details, { marginTop: 10 }]}>
-            {item.response}
-          </Text>
-        </View>
-        <View style={styles.dropView}>
-          <Pressable onPress={() => toggleExpand(item.id)}>
-            <Ionicons
-              name={expandedCards[item.id] ? "chevron-up" : "chevron-down"}
-              size={24}
-              color="gray"
-            />
-          </Pressable>
-        </View>
-      </View>
+      <Link
+        href={{
+          pathname: "tabs/classes_stack/student",
+          params: {
+            name: item.name,
+            id: item.id,
+          },
+        }}
+        asChild
+      >
+        <Pressable style={styles.responseCard}>
+          <View style={styles.responseText}>
+            <Text style={generalStyles.name}>{item.name}</Text>
+            <Text style={[generalStyles.details, { marginTop: 10 }]}>
+              {item.response}
+            </Text>
+          </View>
+          <View style={styles.dropView}>
+            <Pressable onPress={() => toggleExpand(item.id)}>
+              <Ionicons
+                name={expandedCards[item.id] ? "chevron-up" : "chevron-down"}
+                size={24}
+                color="gray"
+              />
+            </Pressable>
+          </View>
+        </Pressable>
+      </Link>
       {expandedCards[item.id] && (
         <View style={styles.buttonRow}>
           <Pressable
@@ -124,7 +123,7 @@ export default function ClassDashboard() {
         <Text style={generalStyles.details}>{period} period</Text>
       </View>
 
-      <MainButton dest="tabs/games" text="START A GAME"></MainButton>
+      <MainButton dest="tabs/games_stack" text="START A GAME"></MainButton>
       <View style={styles.notifications}>
         <Text style={generalStyles.header}>Notifications</Text>
         <FlatList
