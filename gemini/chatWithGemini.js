@@ -13,7 +13,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // const API_URL =
 //   "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
-const API_KEY = "AIzaSyDh0F7ECopGWkMDJxnUaCi9T2TSDZ3hXD0";
+const API_KEY = "Insert Gemini API key here"
 
 const genAI = new GoogleGenerativeAI(API_KEY);
 
